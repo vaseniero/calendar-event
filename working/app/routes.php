@@ -13,4 +13,5 @@
 
 Route::get('/', 'HomeController@home');
 
-Route::post('/addEvent', 'HomeController@addEvent');
+Route::post('/addEvent', 'Events@addEvent');
+Route::post('/readEvent', 'Events@readEvent');

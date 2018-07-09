@@ -201,7 +201,6 @@
 			</tbody>
 
 			<tfoot>
-
 			</tfoot>
 		</table>
     </div>
@@ -224,24 +223,77 @@
 
 	$("#add").click(function() {
 
-		alert('From: ' + $('#dteFrom').val() + ' - To: ' + $('#dteTo').val());
-	 
+		//alert('From: ' + $('#dteFrom').val() + ' - To: ' + $('#dteTo').val());
+
+	    /*
+			Save Event using AJAX
+	    */
+
+	    var txtTitle = $('#txtTitle').val();
+	    var dteFrom = $('#dteFrom').val();
+	    var dteTo = $('#dteTo').val();
+	    var chkSun = $('#chkSun').is(':checked')?true:false;
+	    var chkMon = $('#chkMon').is(':checked')?true:false;
+	    var chkTue = $('#chkTue').is(':checked')?true:false;
+	    var chkWed = $('#chkWed').is(':checked')?true:false;
+	    var chkThu = $('#chkThu').is(':checked')?true:false;
+	    var chkFri = $('#chkFri').is(':checked')?true:false;
+	    var chkSat = $('#chkSat').is(':checked')?true:false;
+
 	    $.ajax({
 	        type: 'post',
 	        url: '/addEvent',
 	        dataType: 'json',
 	        data: {
-	            'title': $('#txtTitle').val(),
-	            'dteFrom' : $('#dteFrom').val(),
-	            'dteTo' : $('#dteTo').val()
+	            'title': txtTitle,
+	            'dteFrom' : dteFrom,
+	            'dteTo' : dteTo,
+	            'Sun' : chkSun,
+	            'Mon' : chkMon,
+	            'Tue' : chkTue,
+	            'Wed' : chkWed,
+	            'Thu' : chkThu,
+	            'Fri' : chkFri,
+				'Sat' : chkSat
 	        },
-	        success: function(_response) {
-	        	alert(_response.responseText);
+	        contentType: 'application/json',
+	        success: function(results) {
+	        	alert(results.responseText);
 	        },
-			error: function (_response) {
-			    alert(_response.responseText);
+			error: function (results) {
+			    alert(results.responseText);
 			}
 	    });
+
+	    /*
+			Clear Form values
+	    */
+	    clearForm();
+
+	    /*
+			Read Event
+	    */
+
+	    $.ajax({
+            type: "post",
+            url: "/readEvent",
+            dataType: "json",
+            data: {
+            },
+            contentType: 'application/json',
+            success: function(results) {
+                if (results.status) {
+					$('#tblCalEvent tbody').html(results.html); 
+                }
+            },
+			error: function (results) {
+			    alert(results.responseText);
+			}
+        });
+
+	});
+
+	function clearForm() {
 
 	    $('#txtTitle').val('');
 	    $('#dtpFrom').val('');
@@ -256,7 +308,12 @@
 	    $('#chkSat').attr('checked', false);
 	    $('#chkSun').attr('checked', false);
 
-	});
+	    $('.table tr').each(function() {	    	
+	    	$(this).find('td:eq(1)').html('');
+	    });
+
+	}
+
 </script>
 
 </body>
