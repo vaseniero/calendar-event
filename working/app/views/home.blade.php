@@ -283,7 +283,7 @@
             contentType: 'application/json',
             success: function(results) {
 				if (results.status) {
-					$('#tblCalEvent tbody').html(results.html); 
+					$('#tblCalEvent tbody').html(results.htmlContent); 
 				}
             },
 			error: function (results) {

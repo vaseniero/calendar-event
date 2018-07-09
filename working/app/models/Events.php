@@ -59,7 +59,7 @@ class Events extends Eloquent {
         $rsEvents = Events::get();
 
         foreach($rsEvents as $rs) {
-            $title = $rs->title;
+            $title = $rs->Title;
             $dteFrom = $rs->dte_From;
             $dteTo = $rs->dte_To;
             $Sun = $rs->Sun;
@@ -81,7 +81,7 @@ class Events extends Eloquent {
         while (strtotime($date) <= strtotime($end_date)) {
 
             $nameOfDay = date('D', strtotime($date));
-            $dateOfDay = date('dd', strtotime($date));
+            $dateOfDay = date('d', strtotime($date));
 
             $htmlContent .= "<tr>";
 
@@ -91,7 +91,7 @@ class Events extends Eloquent {
                     case 'Sun':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Sun) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -100,7 +100,7 @@ class Events extends Eloquent {
                     case 'Mon':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Mon) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -109,7 +109,7 @@ class Events extends Eloquent {
                     case 'Tue':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Tue) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -118,7 +118,7 @@ class Events extends Eloquent {
                     case 'Wed':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Wed) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -127,7 +127,7 @@ class Events extends Eloquent {
                     case 'Thu':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Thu) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -136,7 +136,7 @@ class Events extends Eloquent {
                     case 'Fri':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Fri) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -145,7 +145,7 @@ class Events extends Eloquent {
                     case 'Sat':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Sat) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."></td>";
+                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -169,7 +169,17 @@ class Events extends Eloquent {
 
         $results = array();
         $results['status'] = 1;
-        $results['html'] = $htmlContent;
+        $results['htmlContent'] = $htmlContent;
+        $results['Sun'] = $Sun;
+        $results['Mon'] = $Mon;
+        $results['Tue'] = $Tue;
+        $results['Wed'] = $Wed;
+        $results['Thu'] = $Thu;
+        $results['Fri'] = $Fri;
+        $results['Sat'] = $Sat;
+        $results['dteFrom'] = $dteFrom;
+        $results['dteTo'] = $dteTo;
+        $results['title'] = $title;
 
         die(json_encode($results));     
     }
