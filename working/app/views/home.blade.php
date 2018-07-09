@@ -278,13 +278,13 @@
 	    var urlReadEvent = "{{ URL::to('readEvent') }}";
 
 	    $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: urlReadEvent,
             contentType: 'application/json',
             success: function(results) {
-                if (results.status) {
+				if (results.status) {
 					$('#tblCalEvent tbody').html(results.html); 
-                }
+				}
             },
 			error: function (results) {
 			    alert(results.responseText);

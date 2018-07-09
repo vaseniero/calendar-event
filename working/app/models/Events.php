@@ -42,21 +42,34 @@ class Events extends Eloquent {
 
     public static function readEvent()
     {
+        $title = null;
+        $dteFrom = null;
+        $dteTo = null;
+        $Sun = null;
+        $Mon = null;
+        $Tue = null;
+        $Wed = null;
+        $Thu = null;
+        $Fri = null;
+        $Sat = null;
+
         // Set timezone
         date_default_timezone_set('UTC');
 
-        $rs = Events::get();
+        $rsEvents = Events::get();
 
-        $title = $rs->title;
-        $dteFrom = $rs->dte_From;
-        $dteTo = $rs->dte_To;
-        $Sun = $rs->Sun;
-        $Mon = $rs->Mon;
-        $Tue = $rs->Tue;
-        $Wed = $rs->Wed;
-        $Thu = $rs->Thu;
-        $Fri = $rs->Fri;
-        $Sat = $rs->Sat;
+        foreach($rsEvents as $rs) {
+            $title = $rs->title;
+            $dteFrom = $rs->dte_From;
+            $dteTo = $rs->dte_To;
+            $Sun = $rs->Sun;
+            $Mon = $rs->Mon;
+            $Tue = $rs->Tue;
+            $Wed = $rs->Wed;
+            $Thu = $rs->Thu;
+            $Fri = $rs->Fri;
+            $Sat = $rs->Sat;
+        }
 
         $htmlContent = "";
 
