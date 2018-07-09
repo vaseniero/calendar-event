@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@home');
 
-Route::post('/addEvent', function($request) { 
+Route::post('/addEvent', function() { 
 	Events::addEvent();
 });
 
