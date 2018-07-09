@@ -273,13 +273,9 @@
 	    /*
 			Read Event
 	    */
-
 	    $.ajax({
-            type: "post",
-            url: "/readEvent",
-            dataType: "json",
-            data: {
-            },
+            type: 'get',
+            url: '/readEvent',
             contentType: 'application/json',
             success: function(results) {
                 if (results.status) {
