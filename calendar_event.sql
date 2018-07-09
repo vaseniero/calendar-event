@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2018 at 03:26 PM
+-- Generation Time: Jul 09, 2018 at 10:06 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -47,7 +47,7 @@ CREATE TABLE `tbl_event` (
 --
 
 INSERT INTO `tbl_event` (`Title`, `dte_From`, `dte_To`, `Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`) VALUES
-('Test', '2018-07-01', '2018-07-10', 0, 0, 0, 0, 0, 0, 0);
+('Test Sample Message Event', '2018-07-01', '2018-07-14', 0, 1, 0, 1, 0, 1, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
