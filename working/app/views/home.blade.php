@@ -240,9 +240,11 @@
 	    var chkFri = $('#chkFri').is(':checked')?true:false;
 	    var chkSat = $('#chkSat').is(':checked')?true:false;
 
+	    var urlAddEvent = "{{ URL::to('addEvent') }}";
+
 	    $.ajax({
-	        type: 'post',
-	        url: '/addEvent',
+	        type: 'POST',
+	        url: urlAddEvent,
 	        dataType: 'json',
 	        data: {
 	            'title': txtTitle,
@@ -273,9 +275,11 @@
 	    /*
 			Read Event
 	    */
+	    var urlReadEvent = "{{ URL::to('readEvent') }}";
+
 	    $.ajax({
-            type: 'get',
-            url: '/readEvent',
+            type: 'POST',
+            url: urlReadEvent,
             contentType: 'application/json',
             success: function(results) {
                 if (results.status) {
