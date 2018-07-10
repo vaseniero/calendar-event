@@ -46,20 +46,20 @@
 			<input type="hidden" name="dteTo" id="dteTo" value="" /><br/>
   		</div>
    		<div class="form-group">
-			<input type="checkbox" id="chkMon">
-			<label for="chkMon">Mon</label>
-			<input type="checkbox" id="chkTue">
-			<label for="chkTue">Tue</label>
-			<input type="checkbox" id="chkWed">
-			<label for="chkWed">Wed</label>
-			<input type="checkbox" id="chkThu">
-			<label for="chkThu">Thu</label>
-			<input type="checkbox" id="chkFri">
-			<label for="chkFri">Fri</label>
-			<input type="checkbox" id="chkSat">
-			<label for="chkSat">Sat</label>
-			<input type="checkbox" id="chkSun">
+			<input type="checkbox" name="day[]" id="chkSun" value="Sun">
 			<label for="chkSun">Sun</label>
+			<input type="checkbox" name="day[]" id="chkMon" value="Mon">
+			<label for="chkMon">Mon</label>
+			<input type="checkbox" name="day[]" id="chkTue" value="Tue">
+			<label for="chkTue">Tue</label>
+			<input type="checkbox" name="day[]" id="chkWed" value="Wed">
+			<label for="chkWed">Wed</label>
+			<input type="checkbox" name="day[]" id="chkThu" value="Thu">
+			<label for="chkThu">Thu</label>
+			<input type="checkbox" name="day[]" id="chkFri" value="Fri">
+			<label for="chkFri">Fri</label>
+			<input type="checkbox" name="day[]" id="chkSat" value="Sat">
+			<label for="chkSat">Sat</label>
   		</div>
   		<div class="form-group">
   			<button type="submit" class="btn btn-primary" id="add"><span class="glyphicon glyphicon-plus"></span> ADD</button>

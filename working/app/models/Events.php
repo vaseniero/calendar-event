@@ -22,18 +22,56 @@ class Events extends Eloquent {
         /*
             Save Event Table
         */
+        $Sun = false;
+        $Mon = false;
+        $Tue = false;
+        $Wed = false;
+        $Thu = false;
+        $Fri = false;
+        $Sat = false;
+
+        foreach($request['day']) as $value) {
+            switch ($value) {
+                case 'Sun':
+                    $Sun = true;
+                    break;
+                case 'Mon':
+                    $Mon = true;
+                    break;
+                case 'Tue':
+                    $Tue = true;
+                    break;
+                case 'Wed':
+                    $Wed = true;
+                    break;
+                case 'Thu':
+                    $Thu = true;
+                    break;
+                case 'Fri':
+                    $Fri = true;
+                    break;
+                case 'Sat':
+                    $Sat = true;
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+        }
+
         $data = new Events;
 
         $data->title = $request['txtTitle'];
         $data->dte_From = date('Y-m-d', strtotime($request['dteFrom']));
         $data->dte_To = date('Y-m-d', strtotime($request['dteTo']));
-        $data->Sun = $request['chkSun'];
-        $data->Mon = $request['chkMon'];
-        $data->Tue = $request['chkTue'];
-        $data->Wed = $request['chkWed'];
-        $data->Thu = $request['chkThu'];
-        $data->Fri = $request['chkFri'];
-        $data->Sat = $request['chkSat'];
+        $data->Sun = $Sun;
+        $data->Mon = $Mon;
+        $data->Tue = $Tue;
+        $data->Wed = $Wed;
+        $data->Thu = $Thu;
+        $data->Fri = $Fri;
+        $data->Sat = $Sat;
 
         if($data->save()) {
             return 1;
