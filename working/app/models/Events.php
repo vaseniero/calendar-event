@@ -85,7 +85,7 @@ class Events extends Eloquent {
 
             $htmlContent .= "<tr>";
 
-            if((strtotime($date) >= $dteFrom) && (strtotime($date) <= $dteTo)) 
+            if((strtotime($date) >= strtotime($dteFrom)) && (strtotime($date) <= strtotime($dteTo))) 
             {
                 switch ($nameOfDay) {
                     case 'Sun':
