@@ -23,4 +23,11 @@ class HomeController extends BaseController {
 		return View::make('Home');
 	}
 
+	public function addEvent(Request $request) {
+
+		$result = Events::addEvent($request);
+
+		return response()->json($result);
+	}
+
 }

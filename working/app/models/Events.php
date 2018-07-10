@@ -10,7 +10,7 @@ class Events extends Eloquent {
         Events::truncate();
     }
 
-    public static function addEvent(Request $request)
+    public static function addEvent($request)
     {
         /*
             Empty Event Table
@@ -24,20 +24,25 @@ class Events extends Eloquent {
         */
         $data = new Events;
 
-        $data->title = $request->title;
-        $data->dte_From = date('Y-m-d', strtotime($request->dteFrom));
-        $data->dte_To = date('Y-m-d', strtotime($request->dteTo));
-        $data->Sun = $request->Sun;
-        $data->Mon = $request->Mon;
-        $data->Tue = $request->Tue;
-        $data->Wed = $request->Wed;
-        $data->Thu = $request->Thu;
-        $data->Fri = $request->Fri;
-        $data->Sat = $request->Sat;
+        $data->title = $request['txtTitle'];
+        $data->dte_From = date('Y-m-d', strtotime($request['dteFrom']));
+        $data->dte_To = date('Y-m-d', strtotime($request['dteTo']));
+        $data->Sun = $request['chkSun'];
+        $data->Mon = $request['chkMon'];
+        $data->Tue = $request['chkTue'];
+        $data->Wed = $request['chkWed'];
+        $data->Thu = $request['chkThu'];
+        $data->Fri = $request['chkFri'];
+        $data->Sat = $request['chkSat'];
 
         $data = $data->save();
 
-        return response()->json($data);
+        if($data) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
     }
 
     public static function readEvent()

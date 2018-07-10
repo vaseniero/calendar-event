@@ -13,10 +13,26 @@
 
 Route::get('/', 'HomeController@home');
 
-Route::post('/addEvent', function($request) { 
-	Events::addEvent($request);
-});
-
-Route::get('/readEvent', function() { 
+Route::get('readEvent', function() { 
 	Events::readEvent();
 });
+
+Route::post('addEvent',array('before'=>'csrf','uses'=>function(){
+	$data = Input::all();
+
+	if(Request::ajax())
+	{
+		$result = Events::addEvent($data);
+
+		//if success
+		if($result){
+			return 1;
+		}
+		//if not success
+		else{
+			return 0;
+		}
+		
+	}
+	
+}));

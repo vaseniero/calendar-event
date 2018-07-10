@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="_token" content="{{ csrf_token() }}"/>
 	<title>Laravel PHP Framework</title>
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<link href="{{ asset('datetimepicker/bootstrap_v3/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
@@ -23,6 +24,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5 col-md-offset-1">
+    	{{Form::open(array("","id"=>"frm"))}}
   		<div class="form-group">
     		<label for="txtEvent">Event</label>
     		<input type"text" class="form-control" name="txtTitle" id="txtTitle" placeholder="Enter Event Title" required>
@@ -62,6 +64,7 @@
   		<div class="form-group">
   			<button type="submit" class="btn btn-primary" id="add"><span class="glyphicon glyphicon-plus"></span> ADD</button>
   		</div>
+  		{{ Form::close() }}
     </div>
     <div class="col-md-6">
       	<h3>Jul 2018</h3>
@@ -221,77 +224,57 @@
 		forceParse: 0
     });
 
-	$("#add").click(function() {
+	$("document").ready(function(){
+		$("#frm").submit(function(e){
+			e.preventDefault();
 
-		//alert('From: ' + $('#dteFrom').val() + ' - To: ' + $('#dteTo').val());
+			$.ajaxSetup({
+			   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+			});
 
-	    /*
-			Save Event using AJAX
-	    */
+			var token =  $("input[name=_token]").val();
+		    var txtTitle = $('#txtTitle').val();
+		    var dataString = 'title='+txtTitle+'&token='+token;
 
-	    var txtTitle = $('#txtTitle').val();
-	    var dteFrom = $('#dteFrom').val();
-	    var dteTo = $('#dteTo').val();
-	    var chkSun = $('#chkSun').is(':checked')?true:false;
-	    var chkMon = $('#chkMon').is(':checked')?true:false;
-	    var chkTue = $('#chkTue').is(':checked')?true:false;
-	    var chkWed = $('#chkWed').is(':checked')?true:false;
-	    var chkThu = $('#chkThu').is(':checked')?true:false;
-	    var chkFri = $('#chkFri').is(':checked')?true:false;
-	    var chkSat = $('#chkSat').is(':checked')?true:false;
+		    var urlAddEvent = "{{ URL::to('addEvent') }}";
 
-	    var urlAddEvent = "{{ URL::to('addEvent') }}";
-
-	    $.ajax({
-	        type: 'POST',
-	        url: urlAddEvent,
-	        dataType: 'json',
-	        data: {
-	            'title': txtTitle,
-	            'dteFrom' : dteFrom,
-	            'dteTo' : dteTo,
-	            'Sun' : chkSun,
-	            'Mon' : chkMon,
-	            'Tue' : chkTue,
-	            'Wed' : chkWed,
-	            'Thu' : chkThu,
-	            'Fri' : chkFri,
-				'Sat' : chkSat
-	        },
-	        contentType: 'application/json',
-	        success: function(results) {
-	        	alert(results.responseText);
-	        },
-			error: function (results) {
-			    alert(results.responseText);
-			}
-	    });
-
-	    /*
-			Clear Form values
-	    */
-	    clearForm();
-
-	    /*
-			Read Event
-	    */
-	    var urlReadEvent = "{{ URL::to('readEvent') }}";
-
-	    $.ajax({
-            type: 'GET',
-            url: urlReadEvent,
-            contentType: 'application/json',
-            success: function(results) {
-            	var data = jQuery.parseJSON( results );
-				if (data.status) {
-					$('#tblCalEvent tbody').html(data.htmlContent); 
+		    $.ajax({
+		        type: 'POST',
+		        url: urlAddEvent,
+		        data: dataString,
+		        success: function(results) {
+		        	alert(results.responseText);
+		        },
+				error: function (results) {
+				    alert(results.responseText);
 				}
-            },
-			error: function (results) {
-			    alert(results.responseText);
-			}
-        });
+		    }, "json");
 
+		    /*
+				Clear Form values
+		    */
+		    clearForm();
+
+		    /*
+				Read Event
+		    */
+		    var urlReadEvent = "{{ URL::to('readEvent') }}";
+
+		    $.ajax({
+	            type: 'GET',
+	            url: urlReadEvent,
+	            contentType: 'application/json',
+	            success: function(results) {
+	            	var data = jQuery.parseJSON( results );
+					if (data.status) {
+						$('#tblCalEvent tbody').html(data.htmlContent); 
+					}
+	            },
+				error: function (results) {
+				    alert(results.responseText);
+				}
+	        });
+		});
 	});
 
 	function clearForm() {
