@@ -56,9 +56,6 @@ class Events extends Eloquent {
         $Fri = null;
         $Sat = null;
 
-        // Set timezone
-        date_default_timezone_set('UTC');
-
         $rsEvents = Events::get();
 
         foreach($rsEvents as $rs) {
@@ -73,22 +70,24 @@ class Events extends Eloquent {
             $Fri = $rs->Fri;
             $Sat = $rs->Sat;
         }
+        // Set timezone
+        date_default_timezone_set('UTC');
+
+        // Start date
+        $dteStart = '2018-07-01';
+        // End date
+        $dteEnd = '2018-07-31';
 
         $htmlContent = "";
 
-        // Start date
-        $date = '2018-07-01';
-        // End date
-        $end_date = '2018-07-31';
-
-        while (strtotime($date) <= strtotime($end_date)) {
+        while (strtotime($dteStart) <= strtotime($dteEnd)) {
 
             $nameOfDay = date('D', strtotime($date));
             $dateOfDay = date('d', strtotime($date));
 
             $htmlContent .= "<tr>";
 
-            if((strtotime($date) >= strtotime($dteFrom)) && (strtotime($date) <= strtotime($dteTo))) 
+            if((strtotime($dteStart) >= strtotime($dteFrom)) && (strtotime($dteStart) <= strtotime($dteTo))) 
             {
                 switch ($nameOfDay) {
                     case 'Sun':
@@ -167,7 +166,7 @@ class Events extends Eloquent {
             
             $htmlContent .= "</tr>";
 
-            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+            $dteStart = date ("Y-m-d", strtotime("+1 day", strtotime($dteStart)));
         }
 
         $results = array();

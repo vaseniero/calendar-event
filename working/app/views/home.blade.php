@@ -26,7 +26,7 @@
     <div class="col-md-5 col-md-offset-1">
     	{{Form::open(array("","id"=>"frm"))}}
   		<div class="form-group">
-    		<label for="txtEvent">Event</label>
+    		<label for="txtTitle">Event</label>
     		<input type"text" class="form-control" name="txtTitle" id="txtTitle" placeholder="Enter Event Title" required>
   		</div>
    		<div class="form-group">
