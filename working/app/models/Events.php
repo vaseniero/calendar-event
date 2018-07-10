@@ -35,9 +35,7 @@ class Events extends Eloquent {
         $data->Fri = $request['chkFri'];
         $data->Sat = $request['chkSat'];
 
-        $data = $data->save();
-
-        if($data) {
+        if($data->save()) {
             return 1;
         }
         else {

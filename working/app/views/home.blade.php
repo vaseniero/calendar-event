@@ -231,10 +231,12 @@
 			$.ajaxSetup({
 			   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
 			});
-
+			
 			var token =  $("input[name=_token]").val();
 		    var txtTitle = $('#txtTitle').val();
-		    var dataString = 'title='+txtTitle+'&token='+token;
+    		var dteFrom = $('#dteFrom').val();
+	    	var dteTo = $('#dteTo').val();
+		    var dataString = 'title='+txtTitle+'&token='+token+'&dteFrom='+dteFrom+'&dteTo='+dteTo;
 
 		    var urlAddEvent = "{{ URL::to('addEvent') }}";
 
