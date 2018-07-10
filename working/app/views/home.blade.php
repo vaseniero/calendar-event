@@ -282,8 +282,9 @@
             url: urlReadEvent,
             contentType: 'application/json',
             success: function(results) {
-				if (results.status) {
-					$('#tblCalEvent tbody').html(results.htmlContent); 
+            	var data = jQuery.parseJSON( results );
+				if (data.status) {
+					$('#tblCalEvent tbody').html(data.htmlContent); 
 				}
             },
 			error: function (results) {

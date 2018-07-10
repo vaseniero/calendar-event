@@ -91,7 +91,7 @@ class Events extends Eloquent {
                     case 'Sun':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Sun) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -100,7 +100,7 @@ class Events extends Eloquent {
                     case 'Mon':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Mon) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -109,7 +109,7 @@ class Events extends Eloquent {
                     case 'Tue':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Tue) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -118,7 +118,7 @@ class Events extends Eloquent {
                     case 'Wed':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Wed) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -127,7 +127,7 @@ class Events extends Eloquent {
                     case 'Thu':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Thu) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -136,7 +136,7 @@ class Events extends Eloquent {
                     case 'Fri':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Fri) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
@@ -145,7 +145,7 @@ class Events extends Eloquent {
                     case 'Sat':
                         $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."'>".$dateOfDay." ".$nameOfDay."</td>";
                         if($Sat) {
-                            $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
+                            $htmlContent .= "<td class='table-striped' id='".$dateOfDay."-".$nameOfDay."-Event'>".$title."</td>";
                         }
                         else {
                             $htmlContent .= "<td id='".$dateOfDay."-".$nameOfDay."-Event'></td>";   
