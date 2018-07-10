@@ -24,15 +24,7 @@ Route::post('addEvent',array('before'=>'csrf','uses'=>function(){
 	{
 		$result = Events::addEvent($data);
 
-		//if success
-		if($result){
-			return 1;
-		}
-		//if not success
-		else{
-			return 0;
-		}
-		
+		return $result;		
 	}
 	
 }));
